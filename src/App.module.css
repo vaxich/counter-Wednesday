@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+}
+.counter{
+  font-size: 40px;
+  color:#61dafb
+}
+
+.buttons , .counter {
+  padding: 20px 0;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: #282c34;
+  border: 5px solid #61dafb;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+
