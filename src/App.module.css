@@ -1,6 +1,19 @@
+html, body {
+	height: 100%;
+}
+div {
+	min-height: 100%;
+	background-color:#282c34;
+
+
+
+}
+
 .App {
   text-align: center;
-  background-color: #282c34;
+	padding-top: 20%;
+
+
 }
 .counter{
   font-size: 40px;

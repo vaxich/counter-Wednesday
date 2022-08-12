@@ -31,8 +31,15 @@ export const SetCounter = (props: SetCounterType) => {
     }
     return (
         <div className={s.counter}>
-            <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.startValue} type="number" min="0" max="20" onChange={onChangeInputStartValueHandler} />
-            <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.endValue} type="number" min="0" max="20" onChange={onChangeInputEndValueHandler} />
+            <div>
+                <span> min </span>
+                <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.startValue} type="number" min="0" max="20" onChange={onChangeInputStartValueHandler} />
+            </div>
+            <div>
+                <span> max </span>
+                <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.endValue} type="number" min="0" max="20" onChange={onChangeInputEndValueHandler} />
+            </div>
+
 
         </div>
     )
