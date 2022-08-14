@@ -1,43 +1,53 @@
 import React, { ChangeEvent } from "react"
 import s from '../App.module.css';
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../Redux/Redux-store";
+import {incrimentAC, setNewEndValueAC, setNewStartValueAC, toggleButtonCounterAC} from "../Redux/Reduser";
 
-type SetCounterType = {
-    startValue: number
-    endValue: number
-    setStartValue: (startValue: number) => void
-    setEndValue: (endValue: number) => void
-    setButtonCounter:(buttonCounter:boolean) => void
-}
+// type SetCounterType = {
+//     startValue: number
+//     endValue: number
+//     setStartValue: (startValue: number) => void
+//     setEndValue: (endValue: number) => void
+//     setButtonCounter:(buttonCounter:boolean) => void
+// }
 
-export const SetCounter = (props: SetCounterType) => {
+export const SetCounter = (props: any) => {
 
-    if(props.startValue >= props.endValue) {
-        props.setButtonCounter(true)
+    const dispatch = useDispatch()
+
+    const startValue = useSelector<AppRootStateType, number>(state => state.reduser.startValue)
+    const endValue = useSelector<AppRootStateType, number>(state => state.reduser.endValue)
+
+
+    if(startValue >= endValue) {
+        dispatch(toggleButtonCounterAC(true))
+
     } else {
-        props.setButtonCounter(false)
+        dispatch(toggleButtonCounterAC(false))
     }
 
 
     const onChangeInputStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let newStartValue = Number(e.currentTarget.value)
-        props.setStartValue(newStartValue);
-        localStorage.setItem("startValue", JSON.stringify(newStartValue))
+        dispatch(setNewStartValueAC(newStartValue))
+
     }
     const onChangeInputEndValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let newEndValue = Number(e.currentTarget.value)
-        props.setEndValue(newEndValue);
-        localStorage.setItem("endValue", JSON.stringify(newEndValue))
+        dispatch(setNewEndValueAC(newEndValue))
+
 
     }
     return (
         <div className={s.counter}>
             <div>
                 <span> min </span>
-                <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.startValue} type="number" min="0" max="20" onChange={onChangeInputStartValueHandler} />
+                <input className={startValue >= endValue ?  s.error : ""} value={startValue} type="number" min="0" max="20" onChange={onChangeInputStartValueHandler} />
             </div>
             <div>
                 <span> max </span>
-                <input className={props.startValue >= props.endValue ?  s.error : ""} value={props.endValue} type="number" min="0" max="20" onChange={onChangeInputEndValueHandler} />
+                <input className={startValue >= endValue ?  s.error : ""} value={endValue} type="number" min="0" max="20" onChange={onChangeInputEndValueHandler} />
             </div>
 
 
