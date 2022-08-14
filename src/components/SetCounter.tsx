@@ -2,17 +2,9 @@ import React, { ChangeEvent } from "react"
 import s from '../App.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../Redux/Redux-store";
-import {incrimentAC, setNewEndValueAC, setNewStartValueAC, toggleButtonCounterAC} from "../Redux/Reduser";
+import { setNewEndValueAC, setNewStartValueAC, toggleButtonCounterAC} from "../Redux/Reduser";
 
-// type SetCounterType = {
-//     startValue: number
-//     endValue: number
-//     setStartValue: (startValue: number) => void
-//     setEndValue: (endValue: number) => void
-//     setButtonCounter:(buttonCounter:boolean) => void
-// }
-
-export const SetCounter = (props: any) => {
+export const SetCounter = () => {
 
     const dispatch = useDispatch()
 
